@@ -10,8 +10,16 @@ elseif exists("b:current_syntax")
   finish
 endif
 
+if !exists('main_syntax')
+  let main_syntax = 'tmux.conf'
+endif
+
+unlet! b:current_syntax
+
+syn match tmuxSwitch '-\w'
+
 " Keywords/Commands
-syn keyword tmuxKeywords bind unbind set-option set-window-option set setw
+syn keyword tmuxKeywords bind unbind set-option set-window-option set setw nextgroup=tmuxSwitch skipwhite
 
 " options
 syn keyword tmuxOptions mouse-select-pane mouse-select-window mode-mouse default-terminal status-bg status-justify status-left-length status-right-length status-left status-right window-status-current-format window-status-format pane-active-border-fg default-command
@@ -22,9 +30,14 @@ syn keyword tmuxBindingCalls resize-pane next-layout rotate-window select-pane s
 " Comments
 syn region tmuxComment matchgroup=tmuxComment start='\%(^\|\s\)#' end='$'
 
-HiLink tmuxComment Comment
-HiLink tmuxOptions Type
-HiLink tmuxBindingCalls Special
-
 let b:current_syntax = "tmux.conf"
+if main_syntax ==# 'tmux.conf'
+  unlet main_syntax
+endif
+
+hi def link tmuxComment Comment
+hi def link tmuxKeywords Keyword
+hi def link tmuxOptions Type
+hi def link tmuxBindingCalls Special
+
 
