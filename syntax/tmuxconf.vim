@@ -1,5 +1,5 @@
 " Vim syntax file
-" Language:    tmux.conf
+" Language:    tmuxconf
 " Maintainer:  Tim Reddehase <robustus@rightsrestricted.com>
 " Last Change: 18 January 2014
 " License:     MIT license (see README.md)
@@ -9,12 +9,6 @@ if version < 600
 elseif exists("b:current_syntax")
   finish
 endif
-
-if !exists('main_syntax')
-  let main_syntax = 'tmux.conf'
-endif
-
-unlet! b:current_syntax
 
 syn match tmuxSwitch '-\w'
 
@@ -30,10 +24,7 @@ syn keyword tmuxBindingCalls resize-pane next-layout rotate-window select-pane s
 " Comments
 syn region tmuxComment matchgroup=tmuxComment start='\%(^\|\s\)#' end='$'
 
-let b:current_syntax = "tmux.conf"
-if main_syntax ==# 'tmux.conf'
-  unlet main_syntax
-endif
+let b:current_syntax = "tmuxconf"
 
 hi def link tmuxComment Comment
 hi def link tmuxKeywords Keyword
