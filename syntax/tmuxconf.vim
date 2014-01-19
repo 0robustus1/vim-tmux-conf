@@ -10,7 +10,8 @@ elseif exists("b:current_syntax")
   finish
 endif
 
-syn match tmuxSwitch '-\w'
+syn match tmuxSwitch ' -\w'
+syn match tmuxGlobalSwitch ' -g'
 
 " Keywords/Commands
 syn keyword tmuxKeywords bind unbind bind-key unbind-key
@@ -31,5 +32,7 @@ hi def link tmuxComment Comment
 hi def link tmuxKeywords Keyword
 hi def link tmuxOptions Type
 hi def link tmuxBindingCalls Special
+hi def link tmuxGlobalSwitch Identifier
+hi def link tmuxSwitch Operator
 
 
