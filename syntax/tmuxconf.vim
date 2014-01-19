@@ -13,10 +13,11 @@ endif
 syn match tmuxSwitch '-\w'
 
 " Keywords/Commands
-syn keyword tmuxKeywords bind unbind set-option set-window-option set setw nextgroup=tmuxSwitch skipwhite
+syn keyword tmuxKeywords bind unbind bind-key unbind-key
+syn keyword tmuxKeywords set setw set-option set-window-option nextgroup=tmuxGlobalSwitch,tmuxSwitch skipwhite
 
 " options
-syn keyword tmuxOptions mouse-select-pane mouse-select-window mode-mouse default-terminal status-bg status-justify status-left-length status-right-length status-left status-right window-status-current-format window-status-format pane-active-border-fg default-command
+syn keyword tmuxOptions mouse-select-pane mouse-select-window mode-mouse default-terminal status-bg status-justify status-left-length status-right-length status-left status-right window-status-current-format window-status-format pane-active-border-fg default-command window-status-current-bg window-status-current-fg
 
 " usually used in bindings
 syn keyword tmuxBindingCalls resize-pane next-layout rotate-window select-pane send-prefix
