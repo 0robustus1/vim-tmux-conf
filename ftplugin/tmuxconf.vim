@@ -23,7 +23,7 @@ function! ExecuteAndDisplayTmuxCommand()
 
   let win_number=bufwinnr(output_buf_name)
   if win_number == -1
-    split output_buf_name
+    split __tmux_command_output__
   else
     execute win_number . "wincmd w"
   endif
