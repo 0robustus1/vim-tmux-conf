@@ -35,6 +35,8 @@ function! ExecuteAndDisplayTmuxCommand()
   setlocal buftype=nofile
 
   call append(0, split(output, '\v\n'))
+
+  normal! gg
 endfunction
 
 nnoremap <buffer> te :call ExecuteAndDisplayTmuxCommand()<cr>
