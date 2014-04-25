@@ -6,6 +6,37 @@ Syntax highlighting for tmux configuration files.
 
 *Exactly* as advertised:
 some rudimentary **syntax highlighting** for the `tmux.conf` file.
+Well not entirely, it now does just a teensy bit more: **tmux command execution**.
+
+When writing your `tmux.conf`-file you'll probably want to try things out.
+However always sourcing the tmux configuration after saving can be a
+hassle, even if you've created a *source my configuration*-mapping.
+Now you can just execute specific lines at will. They will be directly
+applied on your currently running tmux sessions.
+
+- Pressing `te` (read: *tmux execute*) on a line in normal mode will execute
+  that line and open a one-line buffer with the output.
+  - You can quit close the buffer by just pressing `q` in normal mode
+- Pressing `tes` (read: *tmux execute silently/shut up*) on a line in normal
+  mode will just execute that line...
+
+### Configuration
+
+Per default we will just execute the `tmux` command. However if your
+PATH is setup differently, you can just set the path to the executable
+manually in your vimrc:
+```vim
+let g:tmux_command = "/path/to/my/tmux"
+```
+
+Per default the height of the output-window will be exactly one line.
+However if you regularly experience output which presents across
+multiple lines you can increase the size (again in your vimrc):
+```vim
+let g:tmux_default_buffer_height = 2
+```
+
+
 
 ## LICENSE
 
